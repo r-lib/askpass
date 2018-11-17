@@ -23,17 +23,17 @@ ask_password_default <- function(prompt){
   }
 }
 
-windows_askpass <- function(prompt){
+windows_askpass <- function(prompt, user = "NA"){
   arch <- .Machine$sizeof.pointer * 8;
-  win_askpass <- system.file(paste0('win-askpass', arch),
-                             package = 'openssl', mustWork = TRUE)
-  res <- sys::exec_internal(win_askpass, prompt, timeout = 120)
+  win_askpass <- system.file(sprintf('win-askpass%d.exe', arch),
+                             package = 'askpass', mustWork = TRUE)
+  res <- sys::exec_internal(win_askpass, c(prompt, user))
   out_without_eol(res$stdout)
 }
 
 applescript_password <- function(prompt){
-  mac_askpass <- system.file('mac-askpass', package = 'openssl', mustWork = TRUE)
-  res <- sys::exec_internal(mac_askpass, prompt, timeout = 120)
+  mac_askpass <- system.file('mac-askpass', package = 'askpass', mustWork = TRUE)
+  res <- sys::exec_internal(mac_askpass, prompt)
   out_without_eol(res$stdout)
 }
 
@@ -57,10 +57,6 @@ readline_bash <- function(prompt){
 
 is_unix <- function(){
   .Platform$OS.type == "unix"
-}
-
-is_windows <- function(){
-  .Platform$OS.type == "windows"
 }
 
 is_macos <- function(){
