@@ -8,7 +8,7 @@ setup_askpass_vars <- function(){
   } else {
     # This is mostly for RGui and R.app (tty could mean MacOS server)
     if(is_windows() || (is_macos() && !isatty(stdin()))){
-      askpass_bin = askpass_path()
+      askpass_bin = ssh_askpass()
       if(is.na(Sys.getenv('GIT_ASKPASS', NA))){
         Sys.setenv("GIT_ASKPASS" = askpass_bin)
       }
