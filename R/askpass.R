@@ -24,13 +24,14 @@ ask_password_default <- function(prompt){
   }
 }
 
-askpass_path <- function(){
+askpass_path <- function(simple = TRUE){
   if(is_windows()){
     arch <- .Machine$sizeof.pointer * 8;
     system.file(sprintf('win-askpass%d.exe', arch),
                                package = 'askpass', mustWork = TRUE)
   } else if(is_macos()){
-    system.file('mac-askpass', package = 'askpass', mustWork = TRUE)
+    prog <- ifelse(isTRUE(simple), 'mac-simplepass', 'mac-askpass')
+    system.file(prog, package = 'askpass', mustWork = TRUE)
   }
 }
 

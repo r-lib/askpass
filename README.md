@@ -22,14 +22,25 @@ To invoke the password prompt manually use:
 askpass::askpass()
 ```
 
-### Windows Credential Prompt
+### R for MacOS 
 
-![askpass-rs](img/askpass-win.png)
+![askpass-mac](img/askpass-mac.png)
 
-### RStudio Desktop
+
+### RStudio (server, desktop)
 
 
 ![askpass-rs](img/askpass-rs.png)
+
+
+### RGUI / Windows
+
+![askpass-rs](img/askpass-win.png)
+
+
+### Terminals
+
+![askpass-rs](img/askpass-term.png)
 
 
 

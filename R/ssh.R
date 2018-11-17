@@ -7,5 +7,5 @@
 #'
 #' @export
 ssh_askpass <- function(){
-  askpass_path()
+  askpass_path(simple = FALSE)
 }
