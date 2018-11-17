@@ -1,9 +1,6 @@
 *.o
 *.so
 *.exe
-src/Makevars
-src/main.exe
+*.dll
 .Rproj.user
 .Rhistory
-src/openssl.dll
-windows
