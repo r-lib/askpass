@@ -1,8 +1,9 @@
 #' Password Prompt Utility
 #'
-#' Function to prompt the user for a password to read a protected private key.
-#' Frontends can provide a custom password entry widget by setting the \code{askpass}
-#' option. If no such option is specified we default to \code{\link{readline}}.
+#' Prompt the user for a password to authhenticate or read a protected key.
+#' By default, this function automatically uses the most appropriate method
+#' based on the user platform and front-end. Users or IDEs can override this
+#' and set a custom password entry function via the `askpass` option.
 #'
 #' @export
 #' @param prompt the string printed when prompting the user for input.
@@ -15,44 +16,50 @@ askpass <- function(prompt = "Please enter your password: "){
 
 ask_password_default <- function(prompt){
   if(is_windows()){
-    windows_askpass(prompt)
+    askpass_windows(prompt)
   } else if(is_macos() && !isatty(stdin())){
-    applescript_password(prompt)
+    askpass_mac(prompt)
   } else {
     readline_silent(prompt)
   }
 }
 
-windows_askpass <- function(prompt, user = "NA"){
-  arch <- .Machine$sizeof.pointer * 8;
-  win_askpass <- system.file(sprintf('win-askpass%d.exe', arch),
-                             package = 'askpass', mustWork = TRUE)
-  res <- sys::exec_internal(win_askpass, c(prompt, user))
+askpass_path <- function(){
+  if(is_windows()){
+    arch <- .Machine$sizeof.pointer * 8;
+    system.file(sprintf('win-askpass%d.exe', arch),
+                               package = 'askpass', mustWork = TRUE)
+  } else if(is_macos()){
+    system.file('mac-askpass', package = 'askpass', mustWork = TRUE)
+  } else {
+    stop("No custom password entry app for your platform")
+  }
+}
+
+askpass_windows <- function(prompt, user = "NA"){
+  res <- sys::exec_internal(askpass_path(), c(prompt, user))
   out_without_eol(res$stdout)
 }
 
-applescript_password <- function(prompt){
-  mac_askpass <- system.file('mac-askpass', package = 'askpass', mustWork = TRUE)
-  res <- sys::exec_internal(mac_askpass, prompt)
+askpass_mac <- function(prompt){
+  res <- sys::exec_internal(askpass_path(), prompt)
   out_without_eol(res$stdout)
 }
 
-readline_silent <- function(prompt){
+readline_silent <- function(prompt, icon = "\U0001f511 "){
   if(is_unix() && isatty(stdin())){
     if(system('stty -echo') == 0){
       on.exit(system('stty echo'))
     }
   }
   cat(prompt, "\n")
-  out <- base::readline("\U0001f511 ")
+  out <- base::readline(icon)
   cat(" OK\n")
   out
 }
 
-readline_bash <- function(prompt){
-  args <- sprintf('-s -p "%s" password && echo $password', prompt)
-  on.exit({system('stty echo'); cat("\n")})
-  system2('read', args, stdout = TRUE)
+is_windows <- function(){
+  .Platform$OS.type == 'windows'
 }
 
 is_unix <- function(){

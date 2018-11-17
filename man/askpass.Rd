@@ -10,7 +10,8 @@ askpass(prompt = "Please enter your password: ")
 \item{prompt}{the string printed when prompting the user for input.}
 }
 \description{
-Function to prompt the user for a password to read a protected private key.
-Frontends can provide a custom password entry widget by setting the \code{askpass}
-option. If no such option is specified we default to \code{\link{readline}}.
+Prompt the user for a password to authhenticate or read a protected key.
+By default, this function automatically uses the most appropriate method
+based on the user platform and front-end. Users or IDEs can override this
+and set a custom password entry function via the `askpass` option.
 }
