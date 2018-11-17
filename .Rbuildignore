@@ -7,13 +7,7 @@
 .Rhistory
 ^.*\.Rproj$
 ^\.Rproj\.user$
-windows
 README.md
-tools/benchmark.R
-^vignettes/figure
-^src/Makevars$
-^src/openssl.dll$
-^src/main.exe$
 ^appveyor.yml$
 ^COPYING$
 ^LICENSE\.md$
