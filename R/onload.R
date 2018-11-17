@@ -14,9 +14,18 @@
   # See: https://github.com/rstudio/rstudio/issues/3805
   rs_path <- Sys.getenv('RS_RPOSTBACK_PATH')
   git_askpass <- Sys.getenv('GIT_ASKPASS')
-  if(nchar(rs_path) && !nchar(Sys.which(git_askpass))){
+  if(nchar(rs_path) && !cmd_exists(git_askpass)){
     PATH <- Sys.getenv("PATH")
     rs_path <- unique(c(rs_path, sub("rpostback", 'postback', rs_path)))
     Sys.setenv(PATH = paste(c(PATH, rs_path), collapse = .Platform$path.sep))
+
+    # Revert if it didn't work
+    if(!cmd_exists(git_askpass)){
+      Sys.setenv(PATH = PATH)
+    }
   }
+}
+
+cmd_exists <- function(cmd){
+  nchar(Sys.which(cmd)) > 0
 }

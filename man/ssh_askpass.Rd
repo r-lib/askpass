@@ -2,13 +2,17 @@
 % Please edit documentation in R/ssh.R
 \name{ssh_askpass}
 \alias{ssh_askpass}
-\title{SSH ASKPASS}
+\title{ASKPASS CMD TOOL}
 \usage{
 ssh_askpass()
 }
 \description{
-This returns the path to the native askpass executable which can be
-used by git or ssh-agent. On Windows and MacOS the package uses this
-to automatically set the \code{SSH_ASKPASS} and \code{GIT_ASKPASS} variables on
-load (if not already set). Users don't have worry about this.
+This returns the path to the native askpass executable which can be used
+by git-credential or ssh-agent. Most users don't have worry about this.
+}
+\details{
+On Windows and MacOS the package automatically sets the \code{SSH_ASKPASS} and
+\code{GIT_ASKPASS} variables on load (if not already set). If these are set
+you should be able to run e.g. \code{sys::exec_wait("ssh-add")} and you should
+be prompted for a passphrase if your key is protected.
 }
