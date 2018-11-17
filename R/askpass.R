@@ -35,13 +35,21 @@ askpass_path <- function(){
 }
 
 askpass_windows <- function(prompt, user = "NA"){
-  res <- sys::exec_internal(askpass_path(), c(prompt, user), timeout = 120)
-  out_without_eol(res$stdout)
+  tryCatch({
+    res <- sys::exec_internal(askpass_path(), c(prompt, user), timeout = 120)
+    out_without_eol(res$stdout)
+  }, error = function(e){
+    message(e$message)
+  })
 }
 
 askpass_mac <- function(prompt){
-  res <- sys::exec_internal(askpass_path(), prompt, timeout = 120)
-  out_without_eol(res$stdout)
+  tryCatch({
+    res <- sys::exec_internal(askpass_path(), prompt, timeout = 120)
+    out_without_eol(res$stdout)
+  }, error = function(e){
+    message(e$message)
+  })
 }
 
 readline_silent <- function(prompt, icon = "\U0001f511 "){
