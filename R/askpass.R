@@ -8,13 +8,13 @@
 #' @export
 #' @param prompt the string printed when prompting the user for input.
 askpass <- function(prompt = "Please enter your password: "){
-  if(!interactive())
-    return(NULL)
   FUN <- getOption("askpass", ask_password_default)
   FUN(prompt)
 }
 
 ask_password_default <- function(prompt){
+  if(!interactive())
+    return(NULL)
   if(is_windows()){
     askpass_windows(prompt)
   } else if(is_macos() && !isatty(stdin())){

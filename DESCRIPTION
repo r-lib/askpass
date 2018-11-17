@@ -16,3 +16,5 @@ Encoding: UTF-8
 LazyData: true
 Imports: sys (>= 2.1)
 RoxygenNote: 6.1.1
+Suggests: 
+    testthat
