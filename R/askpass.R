@@ -31,8 +31,6 @@ askpass_path <- function(){
                                package = 'askpass', mustWork = TRUE)
   } else if(is_macos()){
     system.file('mac-askpass', package = 'askpass', mustWork = TRUE)
-  } else {
-    stop("No custom password entry app for your platform")
   }
 }
 

@@ -13,5 +13,5 @@ askpass(prompt = "Please enter your password: ")
 Prompt the user for a password to authhenticate or read a protected key.
 By default, this function automatically uses the most appropriate method
 based on the user platform and front-end. Users or IDEs can override this
-and set a custom password entry function via the `askpass` option.
+and set a custom password entry function via the \code{askpass} option.
 }

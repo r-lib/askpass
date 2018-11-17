@@ -2,7 +2,7 @@ context("test-option")
 
 test_that("program exists", {
   if(is_windows() || is_macos()){
-    expect_true(file.exists(askpass_path()))
+    expect_true(file.exists(ssh_askpass()))
   }
 })
 
