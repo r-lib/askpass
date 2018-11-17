@@ -1,0 +1,10 @@
+ASKPASS=../inst/win-askpass$(WIN).exe
+ASKPASSOBJ=win32/win-askpass.o
+
+all: $(ASKPASS)
+
+clean:
+	rm -f $(ASKPASS)
+
+$(ASKPASS): $(ASKPASSOBJ)
+	$(CC) $(CFLAGS) -o $(ASKPASS) $(ASKPASSOBJ) -lcredui
