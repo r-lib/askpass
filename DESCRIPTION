@@ -1,7 +1,7 @@
 Package: askpass
 Type: Package
 Title: Safe Password Entry for R, Git, and SSH
-Version: 0.1
+Version: 1.0
 Authors@R: person("Jeroen", "Ooms", role = c("aut", "cre"), 
     email = "jeroen@berkeley.edu", comment = c(ORCID = "0000-0002-4035-0289"))
 Description: Utilities for prompting the user for credentials or a passphrase, for
@@ -12,6 +12,8 @@ Description: Utilities for prompting the user for credentials or a passphrase, f
     and GIT_ASPKASS environment variables. Thereby the user can be prompted for 
     credentials or a passphrase when R calls out to git or ssh-agent.
 License: MIT + file LICENSE
+URL: https://github.com/jeroen/askpass#readme
+BugReports: https://github.com/jeroen/askpass/issues
 Encoding: UTF-8
 LazyData: true
 Imports: sys (>= 2.1)
