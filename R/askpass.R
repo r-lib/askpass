@@ -35,7 +35,7 @@ askpass_path <- function(simple = TRUE){
   }
 }
 
-askpass_windows <- function(prompt, user = attr(prompt, 'username')){
+askpass_windows <- function(prompt, user = names(prompt)){
   tryCatch({
     res <- sys::exec_internal(askpass_path(), c(prompt, user), timeout = 120)
     out_without_eol(res$stdout)
