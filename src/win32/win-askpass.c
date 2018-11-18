@@ -19,7 +19,7 @@ static const char *formatError(DWORD res){
 
 int main( int argc, const char* argv[] ){
   const char *prompt = argc > 1 ? argv[1] : "Please enter password";
-  const char *user = argc > 2 ? argv[2] : "R";
+  const char *user = argc > 2 ? argv[2] : "NA";
   CREDUI_INFO cui;
   TCHAR pszPwd[CREDUI_MAX_PASSWORD_LENGTH+1];
   BOOL fSave;
