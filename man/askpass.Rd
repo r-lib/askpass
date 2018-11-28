@@ -15,3 +15,9 @@ By default, this function automatically uses the most appropriate method
 based on the user platform and front-end. Users or IDEs can override this
 and set a custom password entry function via the \code{askpass} option.
 }
+\examples{
+\donttest{
+# Prompt user for passwd
+pw <- askpass("Please enter your password")
+}
+}

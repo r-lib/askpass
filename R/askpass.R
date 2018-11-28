@@ -7,6 +7,10 @@
 #'
 #' @export
 #' @param prompt the string printed when prompting the user for input.
+#' @examples \donttest{
+#' # Prompt user for passwd
+#' pw <- askpass("Please enter your password")
+#' }
 askpass <- function(prompt = "Please enter your password: "){
   FUN <- getOption("askpass", ask_password_default)
   FUN(prompt)
