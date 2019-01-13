@@ -1,6 +1,7 @@
 #include <Rinternals.h>
 #include <R_ext/Rdynload.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 /* We don't use this anymore */
 
