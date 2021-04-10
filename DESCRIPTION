@@ -1,6 +1,6 @@
 Package: askpass
 Type: Package
-Title: Safe Password Entry for R, Git, and SSH
+Title: Password Entry Utilities for R, Git, and SSH
 Version: 1.1
 Authors@R: person("Jeroen", "Ooms", role = c("aut", "cre"), 
     email = "jeroen@berkeley.edu", comment = c(ORCID = "0000-0002-4035-0289"))

@@ -1,6 +1,6 @@
 # askpass
 
-> Safe Password Entry for R, Git, and SSH
+> Password Entry Utilities for R, Git, and SSH
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/askpass)](https://cran.r-project.org/package=askpass)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/askpass)](https://cran.r-project.org/package=askpass)
