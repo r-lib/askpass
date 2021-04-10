@@ -13,3 +13,4 @@ README.md
 ^LICENSE\.md$
 ^.*\.exe$
 img
+^\.github$
