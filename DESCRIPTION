@@ -13,10 +13,9 @@ Description: Cross-platform utilities for prompting the user for credentials or 
     Thereby the user can be prompted for credentials or a passphrase if needed 
     when R calls out to git or ssh.
 License: MIT + file LICENSE
-URL: https://github.com/jeroen/askpass#readme
-BugReports: https://github.com/jeroen/askpass/issues
+URL: https://github.com/r-lib/askpass
+BugReports: https://github.com/r-lib/askpass/issues
 Encoding: UTF-8
-LazyData: true
 Imports: sys (>= 2.1)
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
