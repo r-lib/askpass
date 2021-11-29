@@ -5,6 +5,14 @@
 #' based on the user platform and front-end. Users or IDEs can override this
 #' and set a custom password entry function via the `askpass` option.
 #'
+#' By default `askpass()` returns `NULL` in non-interactive sessions.
+#' (These include knitr runs and testthat tests.)
+#' If you want to force a password prompt in non-interactive sessions,
+#' set the `rlib_interactive` option to `TRUE`:
+#' ```r
+#' options(rlib_interactive = TRUE)
+#' ```
+#'
 #' @export
 #' @param prompt the string printed when prompting the user for input.
 #' @examples \donttest{
@@ -17,7 +25,7 @@ askpass <- function(prompt = "Please enter your password: "){
 }
 
 ask_password_default <- function(prompt){
-  if(!interactive())
+  if(!is_interactive())
     return(NULL)
   if(is_windows()){
     askpass_windows(prompt)
