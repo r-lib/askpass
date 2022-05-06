@@ -6,6 +6,9 @@ setup_askpass_vars <- function(){
   if(var_exists('RSTUDIO')){
     fix_rstudio_path()
   } else {
+    if(var_exists('RADIAN_VERSION')){
+      options(askpass = ask_password_default)
+    }
     # This is mostly for RGui and R.app (tty could mean MacOS server)
     if(is_windows() || (is_macos() && !isatty(stdin()))){
       askpass_bin = ssh_askpass()
