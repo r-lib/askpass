@@ -19,7 +19,9 @@ and set a custom password entry function via the \code{askpass} option.
 By default \code{askpass()} returns \code{NULL} in non-interactive sessions.
 (These include knitr runs and testthat tests.)
 If you want to force a password prompt in non-interactive sessions,
-set the \code{rlib_interactive} option to \code{TRUE}:\if{html}{\out{<div class="sourceCode r">}}\preformatted{options(rlib_interactive = TRUE)
+set the \code{rlib_interactive} option to \code{TRUE}:
+
+\if{html}{\out{<div class="sourceCode r">}}\preformatted{options(rlib_interactive = TRUE)
 }\if{html}{\out{</div>}}
 }
 \examples{
