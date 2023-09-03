@@ -1,3 +1,6 @@
+1.2.0
+  - Fix package for experimental arm builds
+
 1.1
   - Fix build on R 3.3 and older
   - Fix compiler warning on Solaris
