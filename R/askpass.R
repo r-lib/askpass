@@ -38,8 +38,8 @@ ask_password_default <- function(prompt){
 
 askpass_path <- function(simple = TRUE){
   if(is_windows()){
-    arch <- .Machine$sizeof.pointer * 8;
-    system.file(sprintf('win-askpass%d.exe', arch),
+    arch <- ifelse(identical(.Machine$sizeof.pointer, 4L), "32", "")
+    system.file(sprintf('win-askpass%s.exe', arch),
                                package = 'askpass', mustWork = TRUE)
   } else if(is_macos()){
     prog <- ifelse(isTRUE(simple), 'mac-simplepass', 'mac-askpass')

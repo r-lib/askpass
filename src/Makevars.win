@@ -1,4 +1,4 @@
-ASKPASS=../inst/win-askpass$(WIN).exe
+ASKPASS=../inst/win-askpass$(subst 64,,$(WIN)).exe
 ASKPASSOBJ=win32/win-askpass.o
 
 all: clean $(ASKPASS)
