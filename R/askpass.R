@@ -21,7 +21,7 @@
 #' }
 askpass <- function(prompt = "Please enter your password: "){
   FUN <- getOption("askpass", ask_password_default)
-  FUN(prompt)
+  invisible(FUN(prompt))
 }
 
 ask_password_default <- function(prompt){
